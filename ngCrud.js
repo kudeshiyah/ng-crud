@@ -1,12 +1,18 @@
 var ngCrud = angular.module('ngCrud', ['ngFileUpload'])
 ngCrud.factory('Crud', ['$http', 'Upload', function($http, Upload){
 
-  /**
-  * @desc define simple crud operations
-  * @param obj url - list of urls to perform crud operations
-  * @param string item - name of entity we are peforming operation on
-  * @return nothing
-  */
+  var do_validation = false;
+  function validationOn() {
+    do_validation = true;
+  }
+  function validationOff() {
+    do_validation = false;
+  }
+
+  function is_validation_on() {
+    return do_validation;
+  }
+
   function simpleCrud(url, item){
 
       /**
@@ -61,12 +67,7 @@ ngCrud.factory('Crud', ['$http', 'Upload', function($http, Upload){
       }
   }
 
-  /**
-  * @desc define file upload crud operations
-  * @param obj url - list of urls to perform crud operations
-  * @param string item - name of entity we are peforming operation on
-  * @return nothing
-  */
+
   function uploadCrud(url, item){
 
       /**
@@ -145,27 +146,27 @@ ngCrud.factory('Crud', ['$http', 'Upload', function($http, Upload){
   }
 
 
-  /**
-  * @desc validate results came from derver and take appropriate action
-  * @param function callback - it will be called with fetch data
-  * @param obj result - result of ajax request to server
-  * @param bool flag - show success msg only if this flag is true
-  * @return nothing
-  */
   function validate(callback, result, flag = true) {
-    if (result.valid) {
-      if (result.data.length == 0) {
-        callback()
-      } else {
-        callback(result.data)
+    if (is_validation_on()) {
+      if (result.valid) {
+        if (result.data.length == 0) {
+          callback()
+        } else {
+          callback(result.data)
+        }
+        if(flag){
+          success(result.msg)
+        }
       }
-      if(flag){
-        success(result.msg)
+      else {
+        error(result.error)
+        callback(false)
       }
-    } else {
-      error(result.error)
-      callback(false)
     }
+    else {
+      callback(result)
+    }
+
   }
 
   function success(msg) {
