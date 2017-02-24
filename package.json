@@ -1,15 +1,19 @@
 {
   "name": "ng-crud",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "ngCrud.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "\"Harshit Kudeshiya\"",
+  "author": "\"Harshit Kudeshiya <kudeshiyah@gmail.com>\"",
   "license": "ISC",
   "dependencies": {
     "ng-file-upload": "^12.2.13",
     "sweetalert": "^1.1.3"
+  },
+  "repository" :
+  { "type" : "git"
+  , "url" : "https://github.com/kudeshiyah/ng-crud.git"
   }
 }
