@@ -191,6 +191,8 @@ ngCrud.factory('Crud', ['$http', 'Upload', function($http, Upload){
 
   return{
     simple:simpleCrud,
-    file:uploadCrud
+    file:uploadCrud,
+    validationOn:validationOn,
+    validationOff:validationOff
   }
 }]);

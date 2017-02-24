@@ -1,6 +1,6 @@
 {
   "name": "ng-crud",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "An AngularJs module to perform Simple and File crud operation",
   "main": "ngCrud.js",
   "scripts": {
